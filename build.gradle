@@ -5,11 +5,11 @@ allprojects {
     compileJava.options.encoding = 'UTF-8'
     compileTestJava.options.encoding = 'UTF-8'
 
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 
     version 'v0.24.2'
-    group 'com.github.TeamNewPipe'
+    group 'com.github.bizyback'
 
     repositories {
         mavenCentral()
