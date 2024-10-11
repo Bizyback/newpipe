@@ -16,8 +16,6 @@ import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import okhttp3.HttpUrl;
-
 public final class Utils {
     public static final String HTTP = "http://";
     public static final String HTTPS = "https://";
@@ -40,12 +38,13 @@ public final class Utils {
 
     /**
      * Decodes a URL using the UTF-8 character set.
+     *
      * @param url The URL to be decoded.
      * @return The decoded URL.
      */
     public static String decodeUrlUtf8(final String url) {
-        HttpUrl httpUrl = HttpUrl.parse(url);
-        return httpUrl != null ? httpUrl.encodedPath() : null;
+        return new String(url.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
+        //        return URLDecoder.decode(url, StandardCharsets.UTF_8);
     }
 
     /**
@@ -357,7 +356,7 @@ public final class Utils {
      * @param group   the group to match
      * @return the result
      * @throws Parser.RegexException if none of the patterns match the input, or at least in the
-     * specified group
+     *                               specified group
      */
     @Nonnull
     public static String getStringResultFromRegexArray(@Nonnull final String input,
@@ -381,7 +380,7 @@ public final class Utils {
      * @param group   the group to match
      * @return the result
      * @throws Parser.RegexException if none of the patterns match the input, or at least in the
-     * specified group
+     *                               specified group
      */
     @Nonnull
     public static String getStringResultFromRegexArray(@Nonnull final String input,

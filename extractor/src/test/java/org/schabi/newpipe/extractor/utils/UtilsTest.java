@@ -44,4 +44,13 @@ class UtilsTest {
         assertEquals("https://www.youtube.com/watch?v=Hu80uDzh8RY&url=hello",
                 Utils.followGoogleRedirectIfNeeded("https://www.youtube.com/watch?v=Hu80uDzh8RY&url=hello"));
     }
+
+    @Test
+    void encodeUrlUtf8() {
+    }
+
+    @Test
+    void decodeUrlUtf8() {
+        assertEquals("https://www.youtube.com/watch?v=Hu80uDzh8RY", Utils.decodeUrlUtf8("https://www.youtube.com/watch?v=Hu80uDzh8RY"));
+    }
 }
