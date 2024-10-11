@@ -4,7 +4,6 @@ import org.schabi.newpipe.extractor.exceptions.ParsingException;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
@@ -16,6 +15,8 @@ import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import okhttp3.HttpUrl;
 
 public final class Utils {
     public static final String HTTP = "http://";
@@ -43,7 +44,8 @@ public final class Utils {
      * @return The decoded URL.
      */
     public static String decodeUrlUtf8(final String url) {
-        return URLDecoder.decode(url, StandardCharsets.UTF_8);
+        HttpUrl httpUrl = HttpUrl.parse(url);
+        return httpUrl != null ? httpUrl.encodedPath() : null;
     }
 
     /**
